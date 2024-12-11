@@ -11,7 +11,10 @@ OBJ_DIR := bin
 # ~~ ROOT flags and compiler flags ~~
 ROOTCFLAGS := $(shell root-config --cflags)
 ROOTLIBS := $(shell root-config --libs)
-CXXFLAGS := -Wall -I$(INC_DIR) $(ROOTCFLAGS)
+CXXFLAGS := -Wall -I$(INC_DIR) $(ROOTCFLAGS) -I/opt/homebrew/include
+
+# ~~ Linker flags for yaml-cpp ~~
+LDFLAGS := -L/opt/homebrew/lib -lyaml-cpp
 
 # ~~ Source and object files ~~
 SRCS := $(wildcard $(SRC_DIR)/*.cpp)
@@ -21,7 +24,7 @@ MAIN_OBJ := $(OBJ_DIR)/$(TARGET).o
 
 # === Build Target ===
 $(TARGET): $(MAIN_OBJ) $(OBJS)
-	$(CXX) -o $@ $^ $(ROOTLIBS)
+	$(CXX) -o $@ $^ $(ROOTLIBS) $(LDFLAGS)
 
 # === Compile Main Program ===
 $(MAIN_OBJ): $(MAIN_SRC) | $(OBJ_DIR)
