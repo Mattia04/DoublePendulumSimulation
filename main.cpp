@@ -15,6 +15,7 @@
 #include "DoublePendulum.hpp"
 #include "RungeKutta.hpp"
 #include "EulerMethod.hpp"
+#include "VerletMethod.hpp"
 
 #include "TApplication.h"
 #include "TAxis.h"
@@ -179,8 +180,7 @@ int main(int argc, char **argv)
     if (integrator == "eu2")
         myInteg = new Eulero();
     if (integrator == "v"){
-        cout << "Verlet not yet implemented\n";
-        exit(4);
+        myInteg = new Verlet();
     }
 
     double t = 0.;
