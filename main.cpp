@@ -112,7 +112,7 @@ int main(int argc, char **argv)
     vector<DoublePendulumDamped> pendulums;
     vector<vector<double>> positions;
     for (unsigned int i = 0; i < nPendulums; ++i) {
-        pendulums.push_back(DoublePendulumDamped(gravity, length1 + (double)i / nPendulums /2, length2 + (double)i / nPendulums /2, mass1, mass2, damping1, damping2)); // todo remove
+        pendulums.push_back(DoublePendulumDamped(gravity, length1, length2, mass1, mass2, damping1, damping2));
         positions.push_back(vector<double> {start_theta1, start_theta2 * (1 - spread / 2. + spread * i/nPendulums), 0, 0});
     }
 
