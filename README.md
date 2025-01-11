@@ -11,6 +11,7 @@ The current simulation is able to plot around 1000 pendulums without lagging (on
 Here are two videos simulating 500 pendulums, the pendulums witout trace and just the trace.
 
 ![video2](https://github.com/user-attachments/assets/ba59a9b0-ce9a-4156-b8d3-abbb8c160d2e)
+
 ![video1](https://github.com/user-attachments/assets/6e861552-fef6-4da5-b3b9-d9030a9eb070)
 
 Here is another video demostrating that the period of the pendulum oscillations (for small oscillations) is in function to the length of the pendulum.
