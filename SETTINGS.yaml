@@ -1,24 +1,23 @@
 # ===== Visualization parameters =====
 visualization:
   show_config_space: true # configuration space (true, false)
-  show_phase_space: false # phase space (true, false) TODO: add it
-  show_grid: false # enable grid (true, false)
+  show_phase_space: false # NOT IMPLEMENTED phase space (true, false)
   show_pendulums: true # (true, false)
   show_trace: true # (true, false)
-  trace_length: 1000 # length of trace in number of steps, if you want to keep the trace put a number bigger or equal to: total_time / time_step (integer)
+  trace_length: 100 # length of trace in number of steps, if you want to keep the trace put a number bigger or equal to: total_time / time_step (integer), note that for larger values it could be laggy
 
 # ===== Simulation parameters =====
 simulation_parameters:
-  number_of_pendulums: 1 # (integer)
-  time_step: 0.001 # for rk4 is suggested 0.01 or 0.001 (float)
+  number_of_pendulums: 500 # (integer)
+  time_step: 0.01 # for rk4 is suggested 0.01 or 0.001 (float)
   total_time: 200 # total time for the simulation, if you want infinite time put a big number (float)
 
 # ===== Advanced settings =====
 advanced:
-  integration_method: 'rk4' # (`eu2`: Euler of second order, `rk4`Runge-Kutta of forth order, 'v' Verlet)TODO verlet does not work as intended
-  energy_logging: false # (true, false) add a csv file with: energy of mass1, energy of mass2 and the total energy TODO
-  multi_threading: false # enable multithreading (true, false) TODO
-  thread_count: 8 # number of threads if multithreading is enabled (integer)
+  integration_method: 'rk4' # (`eu2`: Euler of second order, `rk4`Runge-Kutta of forth order, 'v' Verlet)
+  energy_logging: false # NOT IMPLEMENTED (true, false) add a csv file with: energy of mass1, energy of mass2 and the total energy
+  multi_threading: false # NOT IMPLEMENTED enable multithreading (true, false)
+  thread_count: 8 # NOT IMPLEMENTED number of threads if multithreading is enabled (integer)
 
 # ===== Pendulums settings =====
 pendulums: # everything is (float)
@@ -27,12 +26,12 @@ pendulums: # everything is (float)
   mass2: 1
   length1: 1
   length2: 1
-  damping1: 0.1
-  damping2: 0.1 # TODO fix: un errore con il damping del primo pendolo
+  damping1: 0.01
+  damping2: 0.01
   theta1: 3.0
-  theta2: 3.14
+  theta2: 3.1
   spread: 0.01 # Not over-writable for single pendulum
 
 # ===== Change single pendulum settings =====
-pendulum_1:
-  length1: 1
+#pendulum_1:
+#  damping1: 0.1

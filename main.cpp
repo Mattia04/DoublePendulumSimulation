@@ -25,10 +25,6 @@
 #include "TMultiGraph.h"
 #include "TColor.h"
 
-// TODO: add phase space
-// TODO: make the lenghts different and the masses different, e con i marker di dimensione diversa
-// TODO: aggiungere l'attrito
-
 using namespace std;
 
 tuple<float, float, float> HSVtoRGB(float h, float s, float v);
@@ -44,7 +40,6 @@ int main(int argc, char **argv)
     auto visualization       = config["visualization"];
     bool showConfigSpace     = visualization["show_config_space"].as<bool>();
     bool showPhaseSpace      = visualization["show_phase_space"].as<bool>();
-    bool showGrid            = visualization["show_grid"].as<bool>();
     bool showPendulums       = visualization["show_pendulums"].as<bool>();
     bool showTrace           = visualization["show_trace"].as<bool>();
     unsigned int traceLength = visualization["trace_length"].as<unsigned int>();
@@ -52,7 +47,6 @@ int main(int argc, char **argv)
     cout << "  Visualization Parameters:\n";
     cout << "    Show Config Space: " << showConfigSpace << "\n";
     cout << "    Show Phase Space: "  << showPhaseSpace  << "\n";
-    cout << "    Show Grid: "         << showGrid        << "\n";
     cout << "    Trace Length: "      << traceLength     << "\n";
 
     // Accessing 'simulation_parameters'
@@ -118,7 +112,7 @@ int main(int argc, char **argv)
     vector<DoublePendulumDamped> pendulums;
     vector<vector<double>> positions;
     for (unsigned int i = 0; i < nPendulums; ++i) {
-        pendulums.push_back(DoublePendulumDamped(gravity, mass1, mass2, length1, length2, damping1, damping2));
+        pendulums.push_back(DoublePendulumDamped(gravity, length1 + (double)i / nPendulums /2, length2 + (double)i / nPendulums /2, mass1, mass2, damping1, damping2)); // todo remove
         positions.push_back(vector<double> {start_theta1, start_theta2 * (1 - spread / 2. + spread * i/nPendulums), 0, 0});
     }
 
@@ -224,7 +218,7 @@ int main(int argc, char **argv)
     }
 
     // wait time (to record the screen)
-    //this_thread::sleep_for(chrono::milliseconds(1000));
+    this_thread::sleep_for(chrono::milliseconds(2000));
 
 
     int nstep = totalTime / timeStep + 0.5;
